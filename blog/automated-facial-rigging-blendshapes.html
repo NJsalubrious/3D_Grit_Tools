@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Automated Facial Rigging — 3D GRIT</title>
+  <meta name="description" content="Auto-generating a full suite of facial blendshapes from a single input shape, and wiring them directly to the underlying bone structure.">
+  <link rel="canonical" href="https://3dgrit.com/blog/automated-facial-rigging-blendshapes">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z'/%3E%3Cpath d='m3.3 7 8.7 5 8.7-5'/%3E%3Cpath d='M12 22V12'/%3E%3C/svg%3E">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="3D GRIT">
+  <meta property="og:title" content="Automated Facial Rigging">
+  <meta property="og:description" content="Auto-generating a full suite of facial blendshapes from a single input shape, and wiring them directly to the underlying bone structure.">
+  <meta property="og:url" content="https://3dgrit.com/blog/automated-facial-rigging-blendshapes">
+  <meta property="og:image" content="https://img.youtube.com/vi/xg_fJ5Va_4k/maxresdefault.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Automated Facial Rigging">
+  <meta name="twitter:description" content="Auto-generating a full suite of facial blendshapes from a single input shape, and wiring them directly to the underlying bone structure.">
+  <meta name="twitter:image" content="https://img.youtube.com/vi/xg_fJ5Va_4k/maxresdefault.jpg">
+
+  <meta name="grit:endpoint" content="/api/track">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
+
+  <link rel="stylesheet" href="/assets/css/grit.css">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Automated Facial Rigging","description":"Auto-generating a full suite of facial blendshapes from a single input shape, and wiring them directly to the underlying bone structure.","datePublished":"2026-04-19","url":"https://3dgrit.com/blog/automated-facial-rigging-blendshapes","mainEntityOfPage":"https://3dgrit.com/blog/automated-facial-rigging-blendshapes","image":"https://img.youtube.com/vi/xg_fJ5Va_4k/maxresdefault.jpg","author":{"@type":"Organization","name":"3D GRIT"},"publisher":{"@type":"Organization","name":"3D GRIT"}},{"@type":"VideoObject","name":"Automated Facial Rigging","description":"Auto-generating a full suite of facial blendshapes from a single input shape, and wiring them directly to the underlying bone structure.","thumbnailUrl":"https://img.youtube.com/vi/xg_fJ5Va_4k/maxresdefault.jpg","uploadDate":"2026-04-19","embedUrl":"https://www.youtube.com/embed/xg_fJ5Va_4k"}]}</script>
+</head>
+
+<body data-page-id="automated-facial-rigging-blendshapes">
+  <nav id="main-nav">
+    <div class="container nav-inner">
+      <div class="nav-logo">
+        <a href="/" style="display:flex;align-items:center;gap:.6rem;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          <span class="nav-logo-text">3D <span>GRIT</span></span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#ecosystem">Tools</a>
+        <a href="/#features">Features</a>
+        <a href="/blog">Blog</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="/#ecosystem" class="btn-primary" data-track="nav_cta" data-label="Get the tools">Get the Tools</a>
+      </div>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/">Home</a>
+      <a href="/#ecosystem">Tools</a>
+      <a href="/#features">Features</a>
+      <a href="/blog">Blog</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main class="post-page">
+    <article class="post-shell">
+      <a href="/blog" class="post-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        All breakdowns
+      </a>
+
+      <header class="post-header">
+        <span class="post-kicker">Breakdown</span>
+        <h1>Automated Facial Rigging</h1>
+        <p class="post-subtitle">Generating blendshapes to drive bones</p>
+        <div class="post-meta">
+          <time datetime="2026-04-19">April 19, 2026</time>
+          <div class="post-tags"><span class="post-tag">rigging</span><span class="post-tag">facial</span><span class="post-tag">blender</span><span class="post-tag">automation</span></div>
+        </div>
+      </header>
+
+      <div class="post-video"><iframe src="https://www.youtube.com/embed/xg_fJ5Va_4k" title="Automated Facial Rigging" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+      <div class="post-body">
+        <p>Facial rigging is where most pipelines quietly fall apart. The bones are easy. The problem is the dozens of corrective and expressive shapes that have to be sculpted, named, and wired without a single typo breaking the whole face. This breakdown automates the part humans get wrong: generation and wiring.</p>
+<h2>One input shape, a full suite out</h2>
+<p>Instead of hand-sculpting every blendshape, the tool takes a single clean input and generates the standard suite from it, brows, lids, jaw, lip corners, and the in-betweens that sell real motion. You sculpt the intent once; the system produces the variants and keeps the naming consistent.</p>
+<h2>Driving bones with shapes, not the other way around</h2>
+<p>The interesting move here is the direction of control. Rather than animating bones and hoping the deformation reads, the generated blendshapes <strong>drive</strong> the underlying bone structure through drivers. The animator works in expressive, readable controls; the bones follow.</p>
+<blockquote>Consistency is the whole game. A facial rig with one mislabeled target is a facial rig that breaks on the worst possible frame.</blockquote>
+<h2>Where it still needs a human</h2>
+<p>Automation gets you a working, consistent base in minutes. It does not get you a <em>performance</em>. The art direction, the asymmetry, the specific way a character sneers, that stays with the artist. The tool just removes the hours of mechanical setup standing between you and that work.</p>
+      </div>
+
+      <div class="post-footer-cta">
+        <h3>Build it with 3D GRIT</h3>
+        <p>The auto-rigging framework and pipeline tools behind these breakdowns are free to start.</p>
+        <a href="/#ecosystem" class="btn-primary" data-track="post_cta" data-item="automated-facial-rigging-blendshapes">Get the Tools</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            <span>3D <em>GRIT</em></span>
+          </div>
+          <p>Professional auto-rigging and pipeline tools for independent creators and studios. Built for Blender artists, by Blender artists.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="/#ecosystem">Auto-Rigging Framework</a></li>
+            <li><a href="/#ecosystem">MayaForBlender</a></li>
+            <li><a href="/#ecosystem">Retopology</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/#showcase">Showcase</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 3D GRIT — a PixelStortion studio. All rights reserved.</p>
+        <p>Tools with weight.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/track.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>

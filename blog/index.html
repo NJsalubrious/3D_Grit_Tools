@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Breakdowns — 3D GRIT Blog</title>
+  <meta name="description" content="Rigging, pipeline, and 3D-meets-AI breakdowns from the 3D GRIT team.">
+  <link rel="canonical" href="https://3dgrit.com/blog">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z'/%3E%3Cpath d='m3.3 7 8.7 5 8.7-5'/%3E%3Cpath d='M12 22V12'/%3E%3C/svg%3E">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="3D GRIT">
+  <meta property="og:title" content="Breakdowns — 3D GRIT Blog">
+  <meta property="og:description" content="Rigging, pipeline, and 3D-meets-AI breakdowns from the 3D GRIT team.">
+  <meta property="og:url" content="https://3dgrit.com/blog">
+  <meta property="og:image" content="https://3dgrit.com/assets/img/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="grit:endpoint" content="/api/track">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
+
+  <link rel="stylesheet" href="/assets/css/grit.css">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","url":"https://3dgrit.com/blog","name":"3D GRIT Blog"}</script>
+</head>
+
+<body data-page-id="blog-index">
+  <nav id="main-nav">
+    <div class="container nav-inner">
+      <div class="nav-logo">
+        <a href="/" style="display:flex;align-items:center;gap:.6rem;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          <span class="nav-logo-text">3D <span>GRIT</span></span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#ecosystem">Tools</a>
+        <a href="/#features">Features</a>
+        <a href="/blog">Blog</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="/#ecosystem" class="btn-primary" data-track="nav_cta" data-label="Get the tools">Get the Tools</a>
+      </div>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/">Home</a>
+      <a href="/#ecosystem">Tools</a>
+      <a href="/#features">Features</a>
+      <a href="/blog">Blog</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main class="post-page">
+    <div class="container">
+      <div class="section-title">
+        <h2>Breakdowns<span class="subtitle">— The Blog —</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="blog-list">
+        <a class="blog-card" href="/blog/bipedal-rig-foundations" data-track="blog_card" data-item="bipedal-rig-foundations"><div class="blog-card-thumb" style="background-image:url('https://img.youtube.com/vi/EwoU5QGHSfc/maxresdefault.jpg')"></div><div class="blog-card-body"><span class="date">April 20, 2026</span><h3>Bipedal Rig Foundations</h3><p>The first pass at a production-grade bipedal rig. Skeleton hierarchy, IK/FK switching foundations, and why most auto-riggers miss the point.</p></div></a>
+        <a class="blog-card" href="/blog/automated-facial-rigging-blendshapes" data-track="blog_card" data-item="automated-facial-rigging-blendshapes"><div class="blog-card-thumb" style="background-image:url('https://img.youtube.com/vi/xg_fJ5Va_4k/maxresdefault.jpg')"></div><div class="blog-card-body"><span class="date">April 19, 2026</span><h3>Automated Facial Rigging</h3><p>Auto-generating a full suite of facial blendshapes from a single input shape, and wiring them directly to the underlying bone structure.</p></div></a>
+        <a class="blog-card" href="/blog/dynamic-control-shape-switching" data-track="blog_card" data-item="dynamic-control-shape-switching"><div class="blog-card-thumb" style="background-image:url('https://img.youtube.com/vi/2gn7QxH5Rlk/maxresdefault.jpg')"></div><div class="blog-card-body"><span class="date">April 18, 2026</span><h3>Dynamic Control Shapes</h3><p>Building a custom tool panel to automatically swap control curves based on context, visibility needs, and animator preference.</p></div></a>
+        <a class="blog-card" href="/blog/basic-ik-fk-auto-clavicle" data-track="blog_card" data-item="basic-ik-fk-auto-clavicle"><div class="blog-card-thumb" style="background-image:url('https://img.youtube.com/vi/axuYejqu9Os/maxresdefault.jpg')"></div><div class="blog-card-body"><span class="date">March 15, 2026</span><h3>Auto Clavicle / FK IK</h3><p>An early prototype building out the foundational FK/IK limb logic and solving the notoriously difficult automatic clavicle rotation in Blender.</p></div></a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            <span>3D <em>GRIT</em></span>
+          </div>
+          <p>Professional auto-rigging and pipeline tools for independent creators and studios. Built for Blender artists, by Blender artists.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="/#ecosystem">Auto-Rigging Framework</a></li>
+            <li><a href="/#ecosystem">MayaForBlender</a></li>
+            <li><a href="/#ecosystem">Retopology</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/#showcase">Showcase</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 3D GRIT — a PixelStortion studio. All rights reserved.</p>
+        <p>Tools with weight.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/track.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "purpose": "Global site configuration. Single source of truth for brand, base URL, navigation, and footer. Read by the (future) generator and used to keep every page's <head>, nav, and footer consistent.",
+    "baseUrlNote": "PROVISIONAL — confirm the real production domain. Canonicals/og:url/sitemap are built from baseUrl and MUST stay extensionless (Cloudflare strips .html via 308). Change in one place here."
+  },
+  "baseUrl": "https://3dgrit.com",
+  "brand": {
+    "name": "3D GRIT",
+    "nameHtml": "3D&nbsp;<span>GRIT</span>",
+    "tagline": "Tools with weight.",
+    "studio": "PixelStortion",
+    "description": "A modular auto-rigging and pipeline toolkit for Blender, built by artists who ship. Rigging, Maya-muscle-memory bridges, retopology, and a feed of the most interesting work happening where 3D meets AI.",
+    "twitter": "",
+    "ogImage": "/assets/img/og-default.png"
+  },
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Tools", "href": "/#ecosystem" },
+    { "label": "Features", "href": "/#features" },
+    { "label": "Showcase", "href": "/#showcase" },
+    { "label": "Contact", "href": "/#contact" }
+  ],
+  "footer": {
+    "blurb": "Professional auto-rigging and pipeline tools for independent creators and studios. Built for Blender artists, by Blender artists.",
+    "columns": [
+      {
+        "heading": "Tools",
+        "links": [
+          { "label": "Auto-Rigging Framework", "href": "/#ecosystem" },
+          { "label": "MayaForBlender", "href": "/#ecosystem" },
+          { "label": "Retopology", "href": "/#ecosystem" }
+        ]
+      },
+      {
+        "heading": "Resources",
+        "links": [
+          { "label": "Documentation", "href": "/#" },
+          { "label": "Tutorials", "href": "/#" },
+          { "label": "Showcase", "href": "/#showcase" }
+        ]
+      }
+    ],
+    "legal": "© 2026 3D GRIT — a PixelStortion studio. All rights reserved."
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "_meta": {
+    "purpose": "The content spine. Every piece of content on 3D GRIT — pages, tools, blog posts, showreels, and engine-fed hub items — is registered here exactly once. The generator reads this to emit indexable pages, listings, and sitemap.xml. Add an item here and it flows everywhere.",
+    "rules": [
+      "canonicalPath is ALWAYS extensionless (Cloudflare 308-strips .html). The generator writes <slug>.html but links/canonicals use the extensionless path.",
+      "Only items with status 'published' AND an existing page are written to sitemap.xml.",
+      "status: published (live) | draft (authored, not live) | planned (backlog) | candidate (engine-suggested, awaiting approval).",
+      "Every item carries a stable id and slug so it is independently trackable in analytics."
+    ],
+    "types": {
+      "page": "Top-level site page (home, pricing, contact).",
+      "tool": "A product in the ecosystem. Extra fields: tier (free|pro), availability (available|soon), keywordTarget.",
+      "blog": "Tutorial / dev-log post. Extra fields: video, thumbnail, subtitle, excerpt.",
+      "article": "Long-tail SEO article targeting a specific intent query. Extra field: keywordTarget.",
+      "showreel": "Crime-fiction / SFX reel. Extra fields: video, thumbnail, credits.",
+      "hub-item": "An engine-curated '3D meets AI' entry (film, workflow, tool). Extra fields: source, creatorCredit, toolsUsed[], whyInteresting, curationScore (0-1, higher = more positive signal), status starts at 'candidate'. Designed to receive sitt-geo-engine (Gemini Flash) output later; NOT wired yet."
+    }
+  },
+  "items": [
+    {
+      "id": "home",
+      "type": "page",
+      "slug": "index",
+      "title": "3D GRIT — Auto-Rigging & Pipeline Tools for Blender",
+      "description": "A modular auto-rigging framework and pipeline toolkit for Blender. Build bipeds, quadrupeds, and mechanical rigs in seconds. Maya-muscle-memory bridges, retopology, and game-ready assets.",
+      "canonicalPath": "/",
+      "status": "published",
+      "date": "2026-05-29",
+      "tags": ["blender", "rigging", "pipeline", "vfx"],
+      "keywordTarget": "blender auto rigging framework"
+    },
+
+    {
+      "id": "auto-rigging-framework",
+      "type": "tool",
+      "slug": "auto-rigging-framework",
+      "title": "Auto-Rigging Framework — 3D GRIT",
+      "description": "The core of 3D GRIT. Modular bone components, IK/FK switching, and weight tools to build complex bipeds, quadrupeds, and mechanical rigs in seconds.",
+      "canonicalPath": "/tools/auto-rigging-framework",
+      "status": "planned",
+      "tier": "free",
+      "availability": "available",
+      "date": "2026-05-29",
+      "tags": ["rigging", "blender", "ik-fk", "weights"],
+      "keywordTarget": "blender auto rigging addon"
+    },
+    {
+      "id": "auto-rig-pro-face",
+      "type": "tool",
+      "slug": "auto-rig-pro-face",
+      "title": "Auto-Rig Pro & Face Rig — 3D GRIT",
+      "description": "Facial blend-shape rigs, quadruped expansions, advanced constraint systems, and studio-grade export pipelines.",
+      "canonicalPath": "/tools/auto-rig-pro-face",
+      "status": "planned",
+      "tier": "pro",
+      "availability": "soon",
+      "date": "2026-05-29",
+      "tags": ["rigging", "facial", "blendshapes", "pro"],
+      "keywordTarget": "blender facial rig blendshapes"
+    },
+    {
+      "id": "mayaforblender",
+      "type": "tool",
+      "slug": "mayaforblender",
+      "title": "MayaForBlender — 3D GRIT",
+      "description": "The essential pipeline bridge. Alt-navigation, QWER manipulation hotkeys, and Outliner hierarchy sync — your Maya muscle memory, preserved in Blender.",
+      "canonicalPath": "/tools/mayaforblender",
+      "status": "planned",
+      "tier": "free",
+      "availability": "available",
+      "date": "2026-05-29",
+      "tags": ["maya", "blender", "keymap", "workflow"],
+      "keywordTarget": "maya keymap for blender"
+    },
+    {
+      "id": "mayaforblender-pro",
+      "type": "tool",
+      "slug": "mayaforblender-pro",
+      "title": "MayaForBlender Pro — 3D GRIT",
+      "description": "Full shelf mapping, marking menus, custom viewport overlays, and production pipeline integrations.",
+      "canonicalPath": "/tools/mayaforblender-pro",
+      "status": "planned",
+      "tier": "pro",
+      "availability": "soon",
+      "date": "2026-05-29",
+      "tags": ["maya", "blender", "pro", "workflow"],
+      "keywordTarget": "maya marking menus in blender"
+    },
+    {
+      "id": "retopology-tool",
+      "type": "tool",
+      "slug": "retopology-tool",
+      "title": "Retopology Tool — 3D GRIT",
+      "description": "Quad-draw retopology with auto-merge vertices, snapping, and face-aware topology flow. Clean meshes, fast.",
+      "canonicalPath": "/tools/retopology-tool",
+      "status": "planned",
+      "tier": "free",
+      "availability": "available",
+      "date": "2026-05-29",
+      "tags": ["retopology", "blender", "topology", "game-ready"],
+      "keywordTarget": "blender quad draw retopology addon"
+    },
+    {
+      "id": "retopology-pro",
+      "type": "tool",
+      "slug": "retopology-pro",
+      "title": "Retopology Pro — 3D GRIT",
+      "description": "Automated quad-flow suggestions, LOD generation, and batch retopology for game-ready asset pipelines.",
+      "canonicalPath": "/tools/retopology-pro",
+      "status": "planned",
+      "tier": "pro",
+      "availability": "soon",
+      "date": "2026-05-29",
+      "tags": ["retopology", "blender", "pro", "lod"],
+      "keywordTarget": "automatic retopology blender"
+    },
+
+    {
+      "id": "bipedal-rig-foundations",
+      "type": "blog",
+      "slug": "bipedal-rig-foundations",
+      "title": "Bipedal Rig Foundations",
+      "subtitle": "Building the skeletal architecture from scratch",
+      "description": "The first pass at a production-grade bipedal rig. Skeleton hierarchy, IK/FK switching foundations, and why most auto-riggers miss the point.",
+      "excerpt": "The first pass at a production-grade bipedal rig. Skeleton hierarchy, IK/FK switching foundations, and why most auto-riggers miss the point.",
+      "canonicalPath": "/blog/bipedal-rig-foundations",
+      "status": "published",
+      "date": "2026-04-20",
+      "tags": ["rigging", "bipedal", "blender"],
+      "thumbnail": "https://img.youtube.com/vi/EwoU5QGHSfc/maxresdefault.jpg",
+      "video": "https://www.youtube.com/embed/EwoU5QGHSfc"
+    },
+    {
+      "id": "automated-facial-rigging-blendshapes",
+      "type": "blog",
+      "slug": "automated-facial-rigging-blendshapes",
+      "title": "Automated Facial Rigging",
+      "subtitle": "Generating blendshapes to drive bones",
+      "description": "Auto-generating a full suite of facial blendshapes from a single input shape, and wiring them directly to the underlying bone structure.",
+      "excerpt": "Auto-generating a full suite of facial blendshapes from a single input shape, and wiring them directly to the underlying bone structure.",
+      "canonicalPath": "/blog/automated-facial-rigging-blendshapes",
+      "status": "published",
+      "date": "2026-04-19",
+      "tags": ["rigging", "facial", "blender", "automation"],
+      "thumbnail": "https://img.youtube.com/vi/xg_fJ5Va_4k/maxresdefault.jpg",
+      "video": "https://www.youtube.com/embed/xg_fJ5Va_4k"
+    },
+    {
+      "id": "dynamic-control-shape-switching",
+      "type": "blog",
+      "slug": "dynamic-control-shape-switching",
+      "title": "Dynamic Control Shapes",
+      "subtitle": "Switching control types on the fly",
+      "description": "Building a custom tool panel to automatically swap control curves based on context, visibility needs, and animator preference.",
+      "excerpt": "Building a custom tool panel to automatically swap control curves based on context, visibility needs, and animator preference.",
+      "canonicalPath": "/blog/dynamic-control-shape-switching",
+      "status": "published",
+      "date": "2026-04-18",
+      "tags": ["tools", "ui", "blender"],
+      "thumbnail": "https://img.youtube.com/vi/2gn7QxH5Rlk/maxresdefault.jpg",
+      "video": "https://www.youtube.com/embed/2gn7QxH5Rlk"
+    },
+    {
+      "id": "basic-ik-fk-auto-clavicle",
+      "type": "blog",
+      "slug": "basic-ik-fk-auto-clavicle",
+      "title": "Auto Clavicle / FK IK",
+      "subtitle": "Cracking the shoulder complex",
+      "description": "An early prototype building out the foundational FK/IK limb logic and solving the notoriously difficult automatic clavicle rotation in Blender.",
+      "excerpt": "An early prototype building out the foundational FK/IK limb logic and solving the notoriously difficult automatic clavicle rotation in Blender.",
+      "canonicalPath": "/blog/basic-ik-fk-auto-clavicle",
+      "status": "published",
+      "date": "2026-03-15",
+      "tags": ["rigging", "bipedal", "blender"],
+      "thumbnail": "https://img.youtube.com/vi/axuYejqu9Os/maxresdefault.jpg",
+      "video": "https://www.youtube.com/embed/axuYejqu9Os"
+    }
+  ]
+}
