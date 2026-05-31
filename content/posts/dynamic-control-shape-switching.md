@@ -8,9 +8,9 @@ The same control should look different depending on what the animator is doing. 
 
 This isn't a script you run and forget. It's a UI panel that lives in the rig, exposing the curve library so any animator on the team can change shapes without touching the underlying setup. The control object stays the same; only its visual representation changes.
 
-- Swap by **context** — full-body, facial, prop
-- Swap by **visibility** — declutter dense scenes instantly
-- Swap by **preference** — animators keep their own muscle memory
+- Swap by **context**: full-body, facial, prop
+- Swap by **visibility**: declutter dense scenes instantly
+- Swap by **preference**: animators keep their own muscle memory
 
 ## Why this matters
 

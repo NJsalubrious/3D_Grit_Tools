@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-3D GRIT — static site generator (zero-dependency, Python 3.9+).
+3D GRIT static site generator (zero-dependency, Python 3.9+).
 
 Reads content/site.json + content/registry.json, renders every published
 Markdown post (content/posts/<slug>.md) through templates/post.html, rebuilds
@@ -213,7 +213,7 @@ def main():
         og_image = item.get("thumbnail") or default_img
 
         page = fill(post_tpl, {
-            "TITLE": attr(item["title"] + " — 3D GRIT"),
+            "TITLE": attr(item["title"] + " | 3D GRIT"),
             "OG_TITLE": attr(item["title"]),
             "DESCRIPTION": attr(item["description"]),
             "CANONICAL": attr(canonical),
@@ -251,7 +251,7 @@ def main():
         )
     blog_canonical = base + "/blog"
     listing = fill(list_tpl, {
-        "TITLE": attr("Breakdowns — 3D GRIT Blog"),
+        "TITLE": attr("Breakdowns | 3D GRIT Blog"),
         "DESCRIPTION": attr("Rigging, pipeline, and 3D-meets-AI breakdowns from the 3D GRIT team."),
         "CANONICAL": attr(blog_canonical),
         "OG_IMAGE": attr(default_img),

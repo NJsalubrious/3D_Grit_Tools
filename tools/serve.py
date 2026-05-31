@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-3D GRIT — local preview server.
+3D GRIT local preview server.
 
 Plain `python -m http.server` can't resolve the site's extensionless URLs
 (e.g. /blog/bipedal-rig-foundations), but Cloudflare Pages does (it 308-strips

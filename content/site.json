@@ -1,13 +1,13 @@
 {
   "_meta": {
     "purpose": "Global site configuration. Single source of truth for brand, base URL, navigation, and footer. Read by the (future) generator and used to keep every page's <head>, nav, and footer consistent.",
-    "baseUrlNote": "PROVISIONAL — confirm the real production domain. Canonicals/og:url/sitemap are built from baseUrl and MUST stay extensionless (Cloudflare strips .html via 308). Change in one place here."
+    "baseUrlNote": "PROVISIONAL. Confirm the real production domain. Canonicals/og:url/sitemap are built from baseUrl and MUST stay extensionless (Cloudflare strips .html via 308). Change in one place here."
   },
   "baseUrl": "https://3dgrit.com",
   "brand": {
     "name": "3D GRIT",
     "nameHtml": "3D&nbsp;<span>GRIT</span>",
-    "tagline": "Tools with weight.",
+    "tagline": "",
     "studio": "PixelStortion",
     "description": "A modular auto-rigging and pipeline toolkit for Blender, built by artists who ship. Rigging, Maya-muscle-memory bridges, retopology, and a feed of the most interesting work happening where 3D meets AI.",
     "twitter": "",
@@ -40,6 +40,6 @@
         ]
       }
     ],
-    "legal": "© 2026 3D GRIT — a PixelStortion studio. All rights reserved."
+    "legal": "© 2026 3D GRIT, a PixelStortion studio. All rights reserved."
   }
 }

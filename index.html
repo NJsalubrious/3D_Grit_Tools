@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ===== Primary meta ===== -->
-  <title>3D GRIT — Auto-Rigging &amp; Pipeline Tools for Blender</title>
+  <title>3D GRIT: Auto-Rigging &amp; Pipeline Tools for Blender</title>
   <meta name="description" content="A modular auto-rigging framework and pipeline toolkit for Blender. Build bipeds, quadrupeds, and mechanical rigs in seconds. Maya-muscle-memory bridges, retopology, and game-ready assets.">
   <link rel="canonical" href="https://3dgrit.com/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z'/%3E%3Cpath d='m3.3 7 8.7 5 8.7-5'/%3E%3Cpath d='M12 22V12'/%3E%3C/svg%3E">
@@ -13,15 +13,15 @@
   <!-- ===== Open Graph ===== -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="3D GRIT">
-  <meta property="og:title" content="3D GRIT — Auto-Rigging &amp; Pipeline Tools for Blender">
-  <meta property="og:description" content="A modular auto-rigging framework and pipeline toolkit for Blender. Tools with weight.">
+  <meta property="og:title" content="3D GRIT: Auto-Rigging &amp; Pipeline Tools for Blender">
+  <meta property="og:description" content="A modular auto-rigging framework and pipeline toolkit for Blender.">
   <meta property="og:url" content="https://3dgrit.com/">
   <meta property="og:image" content="https://3dgrit.com/assets/img/og-default.png">
 
   <!-- ===== Twitter ===== -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="3D GRIT — Auto-Rigging &amp; Pipeline Tools for Blender">
-  <meta name="twitter:description" content="A modular auto-rigging framework and pipeline toolkit for Blender. Tools with weight.">
+  <meta name="twitter:title" content="3D GRIT: Auto-Rigging &amp; Pipeline Tools for Blender">
+  <meta name="twitter:description" content="A modular auto-rigging framework and pipeline toolkit for Blender.">
   <meta name="twitter:image" content="https://3dgrit.com/assets/img/og-default.png">
 
   <!-- ===== Tracking endpoint (same-origin worker route) ===== -->
@@ -105,69 +105,31 @@
 
     <div class="container hero-content">
       <div class="hero-left">
-        <span class="hero-kicker">Tools with weight</span>
         <h1>
           AUTOMATE YOUR<br>
-          <span class="gradient-text">RIGGING PIPELINE</span>
+          <span class="gradient-text">ANIMATION PIPELINE</span>
         </h1>
         <p class="hero-desc">
-          A modular auto-rigging framework for Blender, built by artists who ship.
-          Bipeds, quadrupeds, and custom mechanical rigs in seconds, not hours —
-          then the bridges, retopology, and assets to carry them through production.
+          A suite of Blender tools for your whole pipeline: rigging, retopology, UVs,
+          texturing, and realtime FX. Built by artists who ship, to take you from model
+          to final shot, fast.
         </p>
         <div class="hero-buttons">
           <a href="#ecosystem" class="btn-primary" data-track="hero_cta" data-label="Get started">
             Get Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
           </a>
-          <a href="#showcase" class="btn-outline" data-track="hero_demo" data-label="Watch demo">
+          <a href="#showcase" class="btn-outline" data-track="hero_demo" data-label="Watch demo" data-video="3D GRIT TOOLKIT DEMO.mp4" data-video-title="3D GRIT Toolkit Demo">
             Watch Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Hero visual mock-up -->
+      <!-- Hero visual: perpetually looping demo reel -->
       <div class="hero-visual">
         <div class="hero-visual-glow"></div>
         <div class="hero-visual-frame">
-          <div class="mock-window">
-            <div class="mock-titlebar">
-              <div class="mock-dot red"></div>
-              <div class="mock-dot yellow"></div>
-              <div class="mock-dot green"></div>
-              <span class="mock-filename mono">3D_Grit_Auto_Rigger.py</span>
-            </div>
-            <div class="mock-body">
-              <div class="mock-sidebar">
-                <div class="mock-sidebar-line" style="width:75%"></div>
-                <div class="mock-sidebar-line" style="width:50%;margin-bottom:.8rem"></div>
-                <div class="mock-sidebar-item"><div class="mock-sidebar-check"></div><div class="mock-sidebar-line" style="width:100%"></div></div>
-                <div class="mock-sidebar-item"><div class="mock-sidebar-check"></div><div class="mock-sidebar-line" style="width:100%"></div></div>
-                <div class="mock-sidebar-item"><div class="mock-sidebar-check"></div><div class="mock-sidebar-line" style="width:100%"></div></div>
-                <div class="mock-sidebar-item"><div class="mock-sidebar-check"></div><div class="mock-sidebar-line" style="width:100%"></div></div>
-                <div class="mock-sidebar-item"><div class="mock-sidebar-check"></div><div class="mock-sidebar-line" style="width:100%"></div></div>
-                <div class="mock-sidebar-item"><div class="mock-sidebar-check"></div><div class="mock-sidebar-line" style="width:100%"></div></div>
-              </div>
-              <div class="mock-viewport">
-                <div class="mock-gridlines">
-                  <div></div><div></div><div></div><div></div><div></div><div></div>
-                  <div></div><div></div><div></div><div></div><div></div><div></div>
-                  <div></div><div></div><div></div><div></div><div></div><div></div>
-                  <div></div><div></div><div></div><div></div><div></div><div></div>
-                  <div></div><div></div><div></div><div></div><div></div><div></div>
-                  <div></div><div></div><div></div><div></div><div></div><div></div>
-                </div>
-                <div class="mock-figure">
-                  <div class="mock-head"></div>
-                  <div class="mock-spine"></div>
-                  <div class="mock-arms"></div>
-                  <div class="mock-info mono">
-                    Bone_L_001 <span class="active">ACTIVE</span><br>
-                    IK_Solver: <span class="enabled">ENABLED</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <video class="hero-visual-video" autoplay loop muted playsinline preload="auto"
+                 src="https://pub-e32d0586a45344c98cee1a56fa11418b.r2.dev/short_looping_demo.mp4"></video>
         </div>
       </div>
     </div>
@@ -177,40 +139,43 @@
   <section id="ecosystem">
     <div class="container">
       <div class="section-title">
-        <h2>The Ecosystem<span class="subtitle">— Tools &amp; Pipeline —</span></h2>
+        <h2>The Ecosystem<span class="subtitle">Tools &amp; Pipeline</span></h2>
         <div class="section-divider"></div>
       </div>
 
       <div class="bento-grid">
 
-        <!-- Flagship: Auto-Rigging Framework -->
-        <div class="ecosystem-card card-flagship animate-in">
-          <div class="card-video-wrap">
-            <div class="video-placeholder mono">[ AUTO-RIG DEMO REEL — DROP .MP4 HERE ]</div>
-          </div>
-          <div class="card-body">
-            <span class="card-tier-badge badge-free">Free Starter</span>
-            <h3 class="mono">Auto-Rigging Framework</h3>
-            <p class="card-desc">
-              The core of 3D GRIT. Build complex bipeds, quadrupeds, and custom mechanical rigs in seconds.
-              Modular bone components, IK/FK switching, and weight tools included.
-            </p>
-            <button class="btn-ecosystem btn-eco-primary" data-track="download_free" data-tool="auto_rig_basic" data-item="auto-rigging-framework">
-              Get Started Free
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-            </button>
-          </div>
+        <!-- Auto-Rigging Framework -->
+        <div class="ecosystem-card card-medium animate-in">
+          <span class="card-tier-badge badge-free">Free Starter</span>
+          <h3 class="mono">Auto-Rigging Framework</h3>
+          <p class="card-desc">
+            The core of 3D GRIT. Build complex bipeds, quadrupeds, and custom mechanical rigs in seconds.
+            Modular bone components, IK/FK switching, and weight tools included.
+          </p>
+          <button class="btn-ecosystem btn-eco-primary" data-track="download_free" data-tool="auto_rig_basic" data-item="auto-rigging-framework">
+            Get Started Free
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+          <button class="btn-watch-demo" data-video="grit_rigging_biped.mp4" data-video-title="Auto-Rigging Framework" data-tool="auto_rig_basic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
         </div>
 
-        <!-- Companion: Auto-Rig Pro -->
-        <div class="ecosystem-card card-companion card-muted animate-in">
-          <span class="card-tier-badge badge-pro">Pro — Coming Soon</span>
+        <!-- Auto-Rig Pro & Face Rig -->
+        <div class="ecosystem-card card-small card-muted animate-in">
+          <span class="card-tier-badge badge-pro">Pro: Coming Soon</span>
           <h3 class="mono">Auto-Rig Pro &amp; Face Rig</h3>
           <p class="card-desc">
             Facial blend-shape rigs, quadruped expansions, advanced constraint systems, and studio-grade export pipelines.
           </p>
           <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="auto_rig_pro" data-item="auto-rig-pro-face">
             Join Pro Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="grit_rigging_face.mp4" data-video-title="Auto-Rig Pro &amp; Face Rig" data-tool="auto_rig_pro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
           </button>
         </div>
 
@@ -220,16 +185,20 @@
           <h3 class="mono">MayaForBlender</h3>
           <p class="card-desc">
             The essential pipeline bridge. Alt-navigation, QWER manipulation hotkeys,
-            and Outliner hierarchy sync — your Maya muscle memory, preserved.
+            and Outliner hierarchy sync. Your Maya muscle memory, preserved.
           </p>
           <button class="btn-ecosystem btn-eco-primary" data-track="download_free" data-tool="maya_bridge_basic" data-item="mayaforblender">
             Download Free Basic
+          </button>
+          <button class="btn-watch-demo" data-video="MayaForBlender.mp4" data-video-title="MayaForBlender" data-tool="maya_bridge_basic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
           </button>
         </div>
 
         <!-- MayaForBlender Pro -->
         <div class="ecosystem-card card-small card-muted animate-in">
-          <span class="card-tier-badge badge-pro">Pro — Coming Soon</span>
+          <span class="card-tier-badge badge-pro">Pro: Coming Soon</span>
           <h3 class="mono">MayaForBlender Pro</h3>
           <p class="card-desc">
             Full shelf mapping, marking menus, custom viewport overlays, and production pipeline integrations.
@@ -237,29 +206,138 @@
           <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="maya_bridge_pro" data-item="mayaforblender-pro">
             Join Waitlist
           </button>
-        </div>
-
-        <!-- Retopology (Free) -->
-        <div class="ecosystem-card card-medium animate-in">
-          <span class="card-tier-badge badge-free">Free</span>
-          <h3 class="mono">Retopology Tool</h3>
-          <p class="card-desc">
-            Quad-draw retopology with auto-merge vertices, snapping, and face-aware topology flow. Clean meshes, fast.
-          </p>
-          <button class="btn-ecosystem btn-eco-primary" data-track="download_free" data-tool="retopo_basic" data-item="retopology-tool">
-            Download Free Basic
+          <button class="btn-watch-demo" data-video="MayaForBlender_Pro.mp4" data-video-title="MayaForBlender Pro" data-tool="maya_bridge_pro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
           </button>
         </div>
 
-        <!-- Retopology Pro -->
-        <div class="ecosystem-card card-small card-muted animate-in">
-          <span class="card-tier-badge badge-pro">Pro — Coming Soon</span>
-          <h3 class="mono">Retopology Pro</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IN DEVELOPMENT ===== -->
+  <section id="in-development" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>In Development<span class="subtitle">Cooking in the lab</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <p style="color:var(--ink-dim);max-width:62ch;margin:-1rem auto 2.5rem;text-align:center;font-size:.95rem;line-height:1.6;">
+        Active builds that ship when they're ready, independent of the core toolset above. Join a waitlist to be first in line.
+      </p>
+
+      <div class="bento-grid">
+
+        <!-- Retopology -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Retopology</h3>
           <p class="card-desc">
-            Automated quad-flow suggestions, LOD generation, and batch retopology for game-ready asset pipelines.
+            Quad-draw retopology with real-time vertices, quad prediction, and one-click relax. Clean, animation-ready topology, fast.
           </p>
-          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="retopo_pro" data-item="retopology-pro">
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="retopo" data-item="retopology-tool">
             Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Retopology.mp4" data-video-title="Retopology" data-tool="retopo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Texture Transfer -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Texture Transfer</h3>
+          <p class="card-desc">
+            Nearest-surface diffuse texture transfer between UV-mapped meshes. Bake detail from one mesh onto another in a click.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="tex_transfer" data-item="texture-transfer">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Texture_Transfer.mp4" data-video-title="Texture Transfer" data-tool="tex_transfer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Realtime FX -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Realtime FX</h3>
+          <p class="card-desc">
+            GPU-accelerated volumetric fluid sim. Fire, smoke, and particles live in the viewport, with flipbook and VDB export.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="realtime_fx" data-item="realtime-fx">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Realtime_FX.mp4" data-video-title="Realtime FX" data-tool="realtime_fx">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Quad Remesh -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Quad Remesh</h3>
+          <p class="card-desc">
+            Rigging-optimized automatic quad remeshing with artist controls. Clean, deformation-ready loops from any dense mesh.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="quad_remesh" data-item="quad-remesh">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Quad_Remesh.mp4" data-video-title="Quad Remesh" data-tool="quad_remesh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Organic -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Organic</h3>
+          <p class="card-desc">
+            Procedural vegetation. Grow trees, shrubs, and vines from L-system and phyllotaxis rules. Art-directable, production-ready foliage.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="organic" data-item="organic">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Organic.mp4" data-video-title="Organic" data-tool="organic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Paint Effects -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Paint Effects</h3>
+          <p class="card-desc">
+            Maya-style procedural Paint Effects, a pure-Python growth engine for strokes, plants, and generative detail.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="paint_effects" data-item="paint-effects">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Paint Effects.mp4" data-video-title="Paint Effects" data-tool="paint_effects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- UV Unwrap -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">UV Unwrap</h3>
+          <p class="card-desc">
+            Maya-style UV tools for Blender: projection, in-context editing, and baking. Faster, cleaner unwraps with familiar muscle memory.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="unwrap" data-item="uv-unwrap">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="unwrap_uv.mp4" data-video-title="UV Unwrap" data-tool="unwrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
           </button>
         </div>
 
@@ -271,7 +349,7 @@
   <section id="features" class="section">
     <div class="container">
       <div class="section-title">
-        <h2>3D GRIT Rig<span class="subtitle">— Auto-Rig Features —</span></h2>
+        <h2>3D GRIT Rig<span class="subtitle">Auto-Rig Features</span></h2>
         <div class="section-divider"></div>
       </div>
 
@@ -329,64 +407,12 @@
   <section id="showcase">
     <div class="container">
       <div class="showcase-card">
-        <div class="showcase-video" data-track="showcase_play" data-label="Nath's Bipedal Auto Rig Demo">
+        <div class="showcase-video" data-track="showcase_play" data-label="Showcase" data-inline-video="grit_rigging_biped.mp4" data-tool="auto_rig_basic">
           <div class="play-circle">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
           </div>
           <div class="showcase-video-info">
-            <h3>Nath's Bipedal Auto Rig Demo</h3>
-            <p class="mono">Python &amp; Blender API Integration</p>
-          </div>
-        </div>
-        <div class="showcase-steps">
-          <h4>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
-            Workflow
-          </h4>
-          <ol class="steps-list">
-            <li class="step-item"><span class="step-num mono">1</span> Give character a name</li>
-            <li class="step-item"><span class="step-num mono">2</span> Create position locators</li>
-            <li class="step-item"><span class="step-num mono">3</span> Position the locators</li>
-            <li class="step-item"><span class="step-num mono">4</span> Generate rig</li>
-            <li class="step-item"><span class="step-num mono">5</span> Bind skin &amp; animate</li>
-          </ol>
-          <a href="#ecosystem" class="btn-outline-full" data-track="docs_click" data-label="Read documentation">Read Documentation</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ASSETS ===== -->
-  <section id="assets" class="section">
-    <div class="container">
-      <div class="assets-grid">
-        <div class="assets-info">
-          <h2>Game Ready Assets</h2>
-          <p>
-            Pre-rigged, game-ready characters optimized for Unity and Unreal Engine.
-            Fully compatible with the Grit framework.
-          </p>
-          <ul class="assets-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Low-poly optimized</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 4K PBR textures</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Full facial rig</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Root-motion compatible</li>
-          </ul>
-          <a href="#contact" class="btn-shop" data-track="assets_shop" data-label="Shop assets">Shop Assets Now</a>
-        </div>
-
-        <div class="assets-visual">
-          <div class="assets-glow"></div>
-          <div class="assets-frame">
-            <div class="assets-thumb">
-              <div class="assets-thumb-radial"></div>
-              <span class="assets-label mono">ORC_WARRIOR_V2.FBX</span>
-              <div class="assets-shape">
-                <div class="bar"></div>
-                <div class="arm-l"></div>
-                <div class="arm-r"></div>
-              </div>
-            </div>
+            <h3>SHOWCASE</h3>
           </div>
         </div>
       </div>
@@ -441,10 +467,18 @@
 
         <div class="footer-col">
           <h4>Tools</h4>
-          <ul>
+          <ul class="footer-tools">
             <li><a href="#ecosystem">Auto-Rigging Framework</a></li>
+            <li><a href="#ecosystem">Auto-Rig Pro &amp; Face Rig</a></li>
             <li><a href="#ecosystem">MayaForBlender</a></li>
-            <li><a href="#ecosystem">Retopology</a></li>
+            <li><a href="#ecosystem">MayaForBlender Pro</a></li>
+            <li><a href="#in-development">Retopology</a></li>
+            <li><a href="#in-development">Texture Transfer</a></li>
+            <li><a href="#in-development">Realtime FX</a></li>
+            <li><a href="#in-development">Quad Remesh</a></li>
+            <li><a href="#in-development">Organic</a></li>
+            <li><a href="#in-development">Paint Effects</a></li>
+            <li><a href="#in-development">UV Unwrap</a></li>
           </ul>
         </div>
 
@@ -459,8 +493,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 3D GRIT — a PixelStortion studio. All rights reserved.</p>
-        <p>Tools with weight.</p>
+        <p>© 2026 3D GRIT, a PixelStortion studio. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -489,6 +522,17 @@
         <h4>Link Sent!</h4>
         <p>Check your inbox. Your download is ready.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- ===== VIDEO LIGHTBOX ===== -->
+  <div class="video-lightbox" id="video-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Tool demo video">
+    <div class="video-lightbox-inner">
+      <button class="video-lightbox-close" id="video-lightbox-close" aria-label="Close video">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <video id="lightbox-video" controls playsinline preload="none"></video>
+      <p class="video-lightbox-title" id="video-lightbox-title"></p>
     </div>
   </div>
 
