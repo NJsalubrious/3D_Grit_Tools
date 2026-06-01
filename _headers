@@ -1,0 +1,7 @@
+# Cloudflare Pages headers.
+# Keep the work-in-progress preview out of search engines (belt-and-suspenders
+# alongside robots.txt). The public site is served from / (see site.json "mode").
+/preview
+  X-Robots-Tag: noindex, nofollow
+/preview.html
+  X-Robots-Tag: noindex, nofollow

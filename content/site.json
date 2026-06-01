@@ -4,6 +4,8 @@
     "baseUrlNote": "PROVISIONAL. Confirm the real production domain. Canonicals/og:url/sitemap are built from baseUrl and MUST stay extensionless (Cloudflare strips .html via 308). Change in one place here."
   },
   "baseUrl": "https://3dgrit.com",
+  "mode": "coming-soon",
+  "_modeNote": "Homepage gate. 'coming-soon' copies coming-soon.html to index.html (public splash); 'live' copies preview.html (the full site) to index.html. Change this one word and run tools/generate.py to launch or revert.",
   "brand": {
     "name": "3D GRIT",
     "nameHtml": "3D&nbsp;<span>GRIT</span>",

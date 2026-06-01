@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /preview
+Disallow: /preview.html
 
 Sitemap: https://3dgrit.com/sitemap.xml

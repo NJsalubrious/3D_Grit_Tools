@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===== Primary meta ===== -->
+  <title>3D GRIT: Auto-Rigging &amp; Pipeline Tools for Blender</title>
+  <meta name="description" content="A modular auto-rigging framework and pipeline toolkit for Blender. Build bipeds, quadrupeds, and mechanical rigs in seconds. Maya-muscle-memory bridges, retopology, and game-ready assets.">
+  <link rel="canonical" href="https://3dgrit.com/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z'/%3E%3Cpath d='m3.3 7 8.7 5 8.7-5'/%3E%3Cpath d='M12 22V12'/%3E%3C/svg%3E">
+
+  <!-- ===== Open Graph ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="3D GRIT">
+  <meta property="og:title" content="3D GRIT: Auto-Rigging &amp; Pipeline Tools for Blender">
+  <meta property="og:description" content="A modular auto-rigging framework and pipeline toolkit for Blender.">
+  <meta property="og:url" content="https://3dgrit.com/">
+  <meta property="og:image" content="https://3dgrit.com/assets/img/og-default.png">
+
+  <!-- ===== Twitter ===== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="3D GRIT: Auto-Rigging &amp; Pipeline Tools for Blender">
+  <meta name="twitter:description" content="A modular auto-rigging framework and pipeline toolkit for Blender.">
+  <meta name="twitter:image" content="https://3dgrit.com/assets/img/og-default.png">
+
+  <!-- ===== Tracking endpoint (same-origin worker route) ===== -->
+  <meta name="grit:endpoint" content="/api/track">
+
+  <!-- ===== Fonts (non-blocking) ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
+
+  <link rel="stylesheet" href="/assets/css/grit.css">
+
+  <!-- ===== Structured data ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://3dgrit.com/#org",
+        "name": "3D GRIT",
+        "url": "https://3dgrit.com/",
+        "description": "A modular auto-rigging and pipeline toolkit for Blender, built by artists who ship.",
+        "logo": "https://3dgrit.com/assets/img/og-default.png",
+        "parentOrganization": { "@type": "Organization", "name": "PixelStortion" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://3dgrit.com/#website",
+        "url": "https://3dgrit.com/",
+        "name": "3D GRIT",
+        "publisher": { "@id": "https://3dgrit.com/#org" }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body data-page-id="home">
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="main-nav">
+    <div class="container nav-inner">
+      <div class="nav-logo">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+        <span class="nav-logo-text">3D <span>GRIT</span></span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#ecosystem">Tools</a>
+        <a href="#features">Features</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#ecosystem" class="btn-primary" data-track="nav_cta" data-label="Get the tools">Get the Tools</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#home">Home</a>
+      <a href="#ecosystem">Tools</a>
+      <a href="#features">Features</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#contact">Contact</a>
+      <a href="#ecosystem" class="btn-primary">Get the Tools</a>
+    </div>
+  </nav>
+
+  <main>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-gradient-overlay"></div>
+
+    <div class="container hero-content">
+      <div class="hero-left">
+        <h1>
+          AUTOMATE YOUR BLENDER<br>
+          <span class="gradient-text">ANIMATION PIPELINE</span>
+        </h1>
+        <p class="hero-desc">
+          A suite of Blender tools for your whole pipeline: rigging, retopology, UVs,
+          texturing, and realtime FX. Built by artists who ship, to take you from model
+          to final shot, fast.
+        </p>
+        <div class="hero-buttons">
+          <a href="#ecosystem" class="btn-primary" data-track="hero_cta" data-label="Get started">
+            Get Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <a href="#showcase" class="btn-outline" data-track="hero_demo" data-label="Watch demo" data-video="3D GRIT TOOLKIT DEMO.mp4" data-video-title="3D GRIT Toolkit Demo">
+            Watch Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero visual: perpetually looping demo reel -->
+      <div class="hero-visual">
+        <div class="hero-visual-glow"></div>
+        <div class="hero-visual-frame">
+          <video class="hero-visual-video" autoplay loop muted playsinline preload="auto"
+                 src="https://pub-e32d0586a45344c98cee1a56fa11418b.r2.dev/short_looping_demo.mp4"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ECOSYSTEM (Bento) ===== -->
+  <section id="ecosystem">
+    <div class="container">
+      <div class="section-title">
+        <h2>The Ecosystem<span class="subtitle">Tools &amp; Pipeline</span></h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="bento-grid">
+
+        <!-- Auto-Rigging Framework -->
+        <div class="ecosystem-card card-medium animate-in">
+          <span class="card-tier-badge badge-free">Free Starter</span>
+          <h3 class="mono">Auto-Rigging Framework</h3>
+          <p class="card-desc">
+            The core of 3D GRIT. Build complex bipeds, quadrupeds, and custom mechanical rigs in seconds.
+            Modular bone components, IK/FK switching, and weight tools included.
+          </p>
+          <button class="btn-ecosystem btn-eco-primary" data-track="download_free" data-tool="auto_rig_basic" data-item="auto-rigging-framework">
+            Get Started Free
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+          <button class="btn-watch-demo" data-video="grit_rigging_biped.mp4" data-video-title="Auto-Rigging Framework" data-tool="auto_rig_basic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Auto-Rig Pro & Face Rig -->
+        <div class="ecosystem-card card-small card-muted animate-in">
+          <span class="card-tier-badge badge-pro">Pro: Coming Soon</span>
+          <h3 class="mono">Auto-Rig Pro &amp; Face Rig</h3>
+          <p class="card-desc">
+            Facial blend-shape rigs, quadruped expansions, advanced constraint systems, and studio-grade export pipelines.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="auto_rig_pro" data-item="auto-rig-pro-face">
+            Join Pro Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="grit_rigging_face.mp4" data-video-title="Auto-Rig Pro &amp; Face Rig" data-tool="auto_rig_pro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- MayaForBlender (Free) -->
+        <div class="ecosystem-card card-medium animate-in">
+          <span class="card-tier-badge badge-free">Free</span>
+          <h3 class="mono">MayaForBlender</h3>
+          <p class="card-desc">
+            The essential pipeline bridge. Alt-navigation, QWER manipulation hotkeys,
+            and Outliner hierarchy sync. Your Maya muscle memory, preserved.
+          </p>
+          <button class="btn-ecosystem btn-eco-primary" data-track="download_free" data-tool="maya_bridge_basic" data-item="mayaforblender">
+            Download Free Basic
+          </button>
+          <button class="btn-watch-demo" data-video="MayaForBlender.mp4" data-video-title="MayaForBlender" data-tool="maya_bridge_basic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- MayaForBlender Pro -->
+        <div class="ecosystem-card card-small card-muted animate-in">
+          <span class="card-tier-badge badge-pro">Pro: Coming Soon</span>
+          <h3 class="mono">MayaForBlender Pro</h3>
+          <p class="card-desc">
+            Full shelf mapping, marking menus, custom viewport overlays, and production pipeline integrations.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="maya_bridge_pro" data-item="mayaforblender-pro">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="MayaForBlender_Pro.mp4" data-video-title="MayaForBlender Pro" data-tool="maya_bridge_pro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IN DEVELOPMENT ===== -->
+  <section id="in-development" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>In Development<span class="subtitle">Cooking in the lab</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <p style="color:var(--ink-dim);max-width:62ch;margin:-1rem auto 2.5rem;text-align:center;font-size:.95rem;line-height:1.6;">
+        Active builds that ship when they're ready, independent of the core toolset above. Join a waitlist to be first in line.
+      </p>
+
+      <div class="bento-grid">
+
+        <!-- Retopology -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Retopology</h3>
+          <p class="card-desc">
+            Quad-draw retopology with real-time vertices, quad prediction, and one-click relax. Clean, animation-ready topology, fast.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="retopo" data-item="retopology-tool">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Retopology.mp4" data-video-title="Retopology" data-tool="retopo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Texture Transfer -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Texture Transfer</h3>
+          <p class="card-desc">
+            Nearest-surface diffuse texture transfer between UV-mapped meshes. Bake detail from one mesh onto another in a click.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="tex_transfer" data-item="texture-transfer">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Texture_Transfer.mp4" data-video-title="Texture Transfer" data-tool="tex_transfer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Realtime FX -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Realtime FX</h3>
+          <p class="card-desc">
+            GPU-accelerated volumetric fluid sim. Fire, smoke, and particles live in the viewport, with flipbook and VDB export.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="realtime_fx" data-item="realtime-fx">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Realtime_FX.mp4" data-video-title="Realtime FX" data-tool="realtime_fx">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Quad Remesh -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Quad Remesh</h3>
+          <p class="card-desc">
+            Rigging-optimized automatic quad remeshing with artist controls. Clean, deformation-ready loops from any dense mesh.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="quad_remesh" data-item="quad-remesh">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Quad_Remesh.mp4" data-video-title="Quad Remesh" data-tool="quad_remesh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Organic -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Organic</h3>
+          <p class="card-desc">
+            Procedural vegetation. Grow trees, shrubs, and vines from L-system and phyllotaxis rules. Art-directable, production-ready foliage.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="organic" data-item="organic">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Organic.mp4" data-video-title="Organic" data-tool="organic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- Paint Effects -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">Paint Effects</h3>
+          <p class="card-desc">
+            Maya-style procedural Paint Effects, a pure-Python growth engine for strokes, plants, and generative detail.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="paint_effects" data-item="paint-effects">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="Paint Effects.mp4" data-video-title="Paint Effects" data-tool="paint_effects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+        <!-- UV Unwrap -->
+        <div class="ecosystem-card card-companion card-muted animate-in">
+          <span class="card-tier-badge badge-pro">In Development</span>
+          <h3 class="mono">UV Unwrap</h3>
+          <p class="card-desc">
+            Maya-style UV tools for Blender: projection, in-context editing, and baking. Faster, cleaner unwraps with familiar muscle memory.
+          </p>
+          <button class="btn-ecosystem btn-eco-outline" data-track="waitlist_click" data-tool="unwrap" data-item="uv-unwrap">
+            Join Waitlist
+          </button>
+          <button class="btn-watch-demo" data-video="unwrap_uv.mp4" data-video-title="UV Unwrap" data-tool="unwrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Watch demo
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>3D GRIT Rig<span class="subtitle">Auto-Rig Features</span></h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <details class="features-disclosure" open>
+        <summary>
+          <span class="expand-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </span>
+          Auto-Rig Features
+        </summary>
+
+        <div class="features-grid">
+          <div class="feature-card animate-in">
+            <div class="bg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22.54 12.43-8.58 3.91a2 2 0 0 1-1.66 0L3.72 12.43"/><path d="m22.54 16.43-8.58 3.91a2 2 0 0 1-1.66 0L3.72 16.43"/></svg></div>
+            <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22.54 12.43-8.58 3.91a2 2 0 0 1-1.66 0L3.72 12.43"/><path d="m22.54 16.43-8.58 3.91a2 2 0 0 1-1.66 0L3.72 16.43"/></svg></div>
+            <h3 class="mono">Modular Components</h3>
+            <p>Rig bipeds, quadrupeds, and custom creatures with a single click using a smart component library.</p>
+          </div>
+          <div class="feature-card animate-in">
+            <div class="bg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v16h16"/><path d="m5 19 6-6"/><path d="m2 6 3-3 3 3"/><path d="m18 16 3 3-3 3"/></svg></div>
+            <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v16h16"/><path d="m5 19 6-6"/><path d="m2 6 3-3 3 3"/><path d="m18 16 3 3-3 3"/></svg></div>
+            <h3 class="mono">Bone Alignment Tool</h3>
+            <p>Precise control over placement and orientation of bones. Snap, align, and distribute with mathematical accuracy.</p>
+          </div>
+          <div class="feature-card animate-in">
+            <div class="bg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
+            <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
+            <h3 class="mono">Weight Saving Tools</h3>
+            <p>Advanced skin weight utilities to save, copy, and mirror weights across different meshes seamlessly.</p>
+          </div>
+          <div class="feature-card animate-in">
+            <div class="bg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.6 2.7a10 10 0 0 1 5.7 5.7"/><circle cx="12" cy="12" r="2"/><path d="M13.4 2.1a10 10 0 0 0-9.3 9.3"/><path d="m2 2 20 20"/></svg></div>
+            <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.6 2.7a10 10 0 0 1 5.7 5.7"/><circle cx="12" cy="12" r="2"/><path d="M13.4 2.1a10 10 0 0 0-9.3 9.3"/><path d="m2 2 20 20"/></svg></div>
+            <h3 class="mono">Control Curve Tool</h3>
+            <p>Choose from a huge library of curve shapes for bone display. Customize aesthetics instantly.</p>
+          </div>
+          <div class="feature-card animate-in">
+            <div class="bg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg></div>
+            <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg></div>
+            <h3 class="mono">Math Expression Tools</h3>
+            <p>Animate bones with complex math expressions by simply choosing from a library of presets.</p>
+          </div>
+          <div class="feature-card animate-in">
+            <div class="bg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg></div>
+            <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg></div>
+            <h3 class="mono">Animation Presets</h3>
+            <p>Library of starting animations. Drag and drop walk cycles, runs, and idles to kickstart your scene.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== SHOWCASE ===== -->
+  <section id="showcase">
+    <div class="container">
+      <div class="showcase-card">
+        <div class="showcase-video" data-track="showcase_play" data-label="Showcase" data-inline-video="grit_rigging_biped.mp4" data-tool="auto_rig_basic">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          </div>
+          <div class="showcase-video-info">
+            <h2>SHOWCASE</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-wrap">
+        <h2>Contact</h2>
+        <div class="contact-divider"></div>
+
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-subject">Subject</label>
+            <input type="text" id="contact-subject" name="subject">
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Submit Message</button>
+          <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            <span>3D <em>GRIT</em></span>
+          </div>
+          <p>Professional auto-rigging and pipeline tools for independent creators and studios. Built for Blender artists, by Blender artists.</p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Tools</h3>
+          <ul class="footer-tools">
+            <li><a href="#ecosystem">Auto-Rigging Framework</a></li>
+            <li><a href="#ecosystem">Auto-Rig Pro &amp; Face Rig</a></li>
+            <li><a href="#ecosystem">MayaForBlender</a></li>
+            <li><a href="#ecosystem">MayaForBlender Pro</a></li>
+            <li><a href="#in-development">Retopology</a></li>
+            <li><a href="#in-development">Texture Transfer</a></li>
+            <li><a href="#in-development">Realtime FX</a></li>
+            <li><a href="#in-development">Quad Remesh</a></li>
+            <li><a href="#in-development">Organic</a></li>
+            <li><a href="#in-development">Paint Effects</a></li>
+            <li><a href="#in-development">UV Unwrap</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#showcase">Showcase</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 3D GRIT, a PixelStortion studio. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SOFT-GATE MODAL ===== -->
+  <div class="modal-overlay" id="capture-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="capture-modal-title">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-header">
+        <h3 class="mono" id="capture-modal-title">Access Unlocked</h3>
+        <p>Enter your email to receive the download link and join the priority waitlist for Pro updates.</p>
+      </div>
+
+      <form class="modal-form" id="capture-form">
+        <div class="form-group">
+          <input type="email" id="capture-email" placeholder="artist@studio.com" required>
+        </div>
+        <button type="submit" class="btn-submit">Send Download Link</button>
+      </form>
+
+      <div class="modal-success" id="modal-success-state" style="display:none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h4>Link Sent!</h4>
+        <p>Check your inbox. Your download is ready.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== VIDEO LIGHTBOX ===== -->
+  <div class="video-lightbox" id="video-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Tool demo video">
+    <div class="video-lightbox-inner">
+      <button class="video-lightbox-close" id="video-lightbox-close" aria-label="Close video">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <video id="lightbox-video" controls playsinline preload="none"></video>
+      <p class="video-lightbox-title" id="video-lightbox-title"></p>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="/assets/js/track.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>

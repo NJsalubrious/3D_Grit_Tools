@@ -183,6 +183,16 @@ def main():
     post_tpl = (TPL_DIR / "post.html").read_text(encoding="utf-8")
     list_tpl = (TPL_DIR / "blog_index.html").read_text(encoding="utf-8")
 
+    # ---- homepage gate: coming-soon splash vs the live full site ----
+    mode = (site.get("mode") or "coming-soon").strip().lower()
+    home_src = "coming-soon.html" if mode == "coming-soon" else "preview.html"
+    src_path = ROOT / home_src
+    if src_path.exists():
+        write(ROOT / "index.html", src_path.read_text(encoding="utf-8"))
+        print(f"  home   mode={mode}  ->  index.html (from {home_src})")
+    else:
+        print(f"  home   WARNING: source '{home_src}' not found; index.html left as-is")
+
     items = registry["items"]
     published_posts = []
     skipped = []
@@ -246,7 +256,7 @@ def main():
             f'data-track="blog_card" data-item="{attr(it["id"])}">'
             f'<div class="blog-card-thumb" style="background-image:url(\'{attr(thumb)}\')"></div>'
             f'<div class="blog-card-body"><span class="date">{text(human_date(it.get("date","")))}</span>'
-            f'<h3>{text(it["title"])}</h3>'
+            f'<h2>{text(it["title"])}</h2>'
             f'<p>{text(it.get("excerpt") or it["description"])}</p></div></a>'
         )
     blog_canonical = base + "/blog"
