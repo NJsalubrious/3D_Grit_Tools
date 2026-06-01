@@ -12,8 +12,14 @@
     "tagline": "",
     "studio": "PixelStortion",
     "description": "A modular auto-rigging and pipeline toolkit for Blender, built by artists who ship. Rigging, Maya-muscle-memory bridges, retopology, and a feed of the most interesting work happening where 3D meets AI.",
-    "twitter": "",
+    "twitter": "@3DGrit",
     "ogImage": "/3D_GRIT_SOCIALS.jpg"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/3d_grit/",
+    "x": "https://x.com/3DGrit",
+    "youtube": "https://www.youtube.com/@3DGrit",
+    "facebook": "https://www.facebook.com/3DGRIT/"
   },
   "nav": [
     { "label": "Home", "href": "/" },
