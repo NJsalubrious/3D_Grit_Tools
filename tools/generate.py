@@ -22,6 +22,7 @@ import re
 import html
 import datetime
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -30,6 +31,56 @@ TPL_DIR = ROOT / "templates"
 
 POST_TYPES = {"blog", "article", "showreel"}
 KICKER = {"blog": "Breakdown", "article": "Guide", "showreel": "Reel"}
+
+# R2 public bucket that serves the demo videos (matches assets/js/site.js).
+VIDEO_BASE = "https://pub-e32d0586a45344c98cee1a56fa11418b.r2.dev/"
+
+
+def tool_name(item):
+    """Short display name from the SEO title: 'Retopology: Quad-Draw | 3D GRIT' -> 'Retopology'."""
+    t = item["title"].split(" | ")[0]
+    return t.split(":")[0].strip() if ":" in t else t.strip()
+
+
+def tool_jsonld(item, canonical, default_img, base, name):
+    tier = item.get("tier", "free")
+    available = item.get("availability", "available") == "available"
+    app = {
+        "@type": "SoftwareApplication",
+        "name": name,
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "description": item["description"],
+        "url": canonical,
+        "image": default_img,
+        "offers": {
+            "@type": "Offer",
+            "price": "0" if tier == "free" else "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock" if available else "https://schema.org/PreOrder",
+            "url": canonical,
+        },
+        "publisher": {"@type": "Organization", "name": "3D GRIT", "url": base + "/"},
+    }
+    breadcrumb = {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": base + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Tools", "item": base + "/#ecosystem"},
+            {"@type": "ListItem", "position": 3, "name": name, "item": canonical},
+        ],
+    }
+    graph = [app, breadcrumb]
+    if item.get("video"):
+        graph.append({
+            "@type": "VideoObject",
+            "name": name + " demo",
+            "description": item["description"],
+            "thumbnailUrl": default_img,
+            "uploadDate": item.get("date"),
+            "contentUrl": VIDEO_BASE + quote(item["video"]),
+        })
+    return {"@context": "https://schema.org", "@graph": graph}
 
 
 # ---------------------------------------------------------------- helpers
@@ -182,6 +233,7 @@ def main():
     default_img = base + site["brand"].get("ogImage", "/assets/img/og-default.png")
     post_tpl = (TPL_DIR / "post.html").read_text(encoding="utf-8")
     list_tpl = (TPL_DIR / "blog_index.html").read_text(encoding="utf-8")
+    tool_tpl = (TPL_DIR / "tool.html").read_text(encoding="utf-8")
 
     # ---- homepage gate: coming-soon splash vs the live full site ----
     mode = (site.get("mode") or "coming-soon").strip().lower()
@@ -274,10 +326,68 @@ def main():
     write(ROOT / "blog" / "index.html", listing)
     print(f"  list   /blog  ->  blog/index.html  ({len(published_posts)} posts)")
 
+    # ---- tool pages (the indexable "money pages") ----
+    published_tools = []
+    for item in items:
+        if item.get("type") != "tool":
+            continue
+        if item.get("status") != "published":
+            skipped.append((item["slug"], "tool status=" + str(item.get("status"))))
+            continue
+        canonical = base + item["canonicalPath"]
+        name = tool_name(item)
+        tier = item.get("tier", "free")
+        available = item.get("availability", "available") == "available"
+
+        if available:
+            badge, badge_class = ("Free", "badge-free") if tier == "free" else ("Available", "badge-pro")
+        else:
+            badge, badge_class = ("Coming Soon", "badge-pro")
+
+        video_html = ""
+        if item.get("video"):
+            vurl = VIDEO_BASE + quote(item["video"])
+            video_html = (
+                f'<div class="post-video"><video src="{attr(vurl)}" controls playsinline '
+                f'preload="none" poster="{attr(default_img)}"></video></div>'
+            )
+
+        if tier == "free" and available:
+            cta = (f'<a href="/#ecosystem" class="btn-primary" data-track="download_free" '
+                   f'data-tool="{attr(item["id"])}" data-item="{attr(item["id"])}">Get Started Free</a>')
+        else:
+            cta = (f'<a href="/#ecosystem" class="btn-primary" data-track="waitlist_click" '
+                   f'data-tool="{attr(item["id"])}" data-item="{attr(item["id"])}">Join the Waitlist</a>')
+
+        tags_html = "".join(f'<span class="post-tag">{text(t)}</span>' for t in item.get("tags", []))
+
+        page = fill(tool_tpl, {
+            "TITLE": attr(item["title"]),
+            "OG_TITLE": attr(name),
+            "DESCRIPTION": attr(item["description"]),
+            "CANONICAL": attr(canonical),
+            "OG_IMAGE": attr(default_img),
+            "JSONLD": jsonld_block(tool_jsonld(item, canonical, default_img, base, name)),
+            "PAGE_ID": attr(item["id"]),
+            "HEADING": text(name),
+            "BADGE": text(badge),
+            "BADGE_CLASS": attr(badge_class),
+            "TAGS": tags_html,
+            "VIDEO": video_html,
+            "BODY": f"<p>{text(item['description'])}</p>",
+            "CTA": cta,
+        })
+        out_path = ROOT / (item["canonicalPath"].strip("/") + ".html")
+        write(out_path, page)
+        published_tools.append(item)
+        print(f"  tool   {item['canonicalPath']}  ->  {out_path.relative_to(ROOT)}")
+
     # ---- sitemap ----
     today = datetime.date.today().isoformat()
-    urls = [(base + "/", today, "weekly", "1.0"),
-            (blog_canonical, today, "weekly", "0.7")]
+    urls = [(base + "/", today, "weekly", "1.0")]
+    for it in published_tools:
+        urls.append((base + it["canonicalPath"], it.get("date", today), "monthly", "0.8"))
+    urls.append((blog_canonical, today, "weekly", "0.7"))
     for it in published_posts:
         urls.append((base + it["canonicalPath"], it.get("date", today), "monthly", "0.6"))
     rows = "\n".join(
@@ -299,7 +409,7 @@ def main():
         print("\nskipped:")
         for slug, why in skipped:
             print(f"  - {slug}: {why}")
-    print(f"\nDone. {len(published_posts)} post(s) generated.")
+    print(f"\nDone. {len(published_tools)} tool page(s), {len(published_posts)} post(s) generated.")
 
 
 if __name__ == "__main__":
