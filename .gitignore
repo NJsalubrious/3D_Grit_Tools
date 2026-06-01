@@ -1,6 +1,9 @@
 # Local pre-edit safety copies — git history is the real version control
 backup/
 
+# Local-only go-live checklist (never deploy internal notes to the public site)
+______readWhenSwitchingToLiveSite/
+
 # Demo videos live on Cloudflare R2, never in the repo
 assets/video/
 *.mp4
