@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>3D GRIT: Blender Pipeline Tools</title>
+  <meta name="description" content="3D GRIT is a suite of Blender tools for the animation pipeline: rigging, retopology, UVs, FX, and a Maya-style keymap. Join the waitlist.">
+  <link rel="canonical" href="https://3dgrit.com/">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z'/%3E%3Cpath d='m3.3 7 8.7 5 8.7-5'/%3E%3Cpath d='M12 22V12'/%3E%3C/svg%3E">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="3D GRIT">
+  <meta property="og:title" content="3D GRIT: Blender Pipeline Tools">
+  <meta property="og:description" content="A suite of Blender tools for the animation pipeline. Join the waitlist.">
+  <meta property="og:url" content="https://3dgrit.com/">
+  <meta property="og:image" content="https://3dgrit.com/3D_GRIT_SOCIALS.jpg">
+
+  <!-- Tracking endpoint (same-origin worker route) -->
+  <meta name="grit:endpoint" content="/api/track">
+
+  <style>
+    /* ============================================================
+       3D GRIT — single-file landing page
+       Brand: cyan accent (#22d3ee) on near-black.
+       ============================================================ */
+    :root {
+      --bg: #0a0c10;
+      --panel: #11151c;
+      --panel-2: #161b24;
+      --line: #232a36;
+      --ink: #e8edf4;
+      --ink-dim: #93a0b4;
+      --accent: #22d3ee;
+      --accent-2: #38bdf8;
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* subtle grid backdrop */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(34,211,238,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,211,238,.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 1.25rem 5rem;
+    }
+
+    /* ---- header ---- */
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      margin-bottom: 2.5rem;
+    }
+    .logo svg { width: 38px; height: 38px; }
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: .04em;
+    }
+    .logo-text span { color: var(--accent); }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      margin: 0 0 .5rem;
+      line-height: 1.1;
+    }
+    h1 .grad {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .tagline {
+      text-align: center;
+      color: var(--ink-dim);
+      font-size: 1.05rem;
+      max-width: 50ch;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* ---- waitlist form ---- */
+    .waitlist {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .waitlist h2 {
+      margin: 0 0 .25rem;
+      font-size: 1.15rem;
+      text-align: center;
+    }
+    .waitlist p {
+      margin: 0 0 1rem;
+      text-align: center;
+      color: var(--ink-dim);
+      font-size: .9rem;
+    }
+    .waitlist-form {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+    }
+    .waitlist-form input {
+      flex: 1 1 220px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--ink);
+      padding: .8rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .waitlist-form input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(34,211,238,.15);
+    }
+    .waitlist-form button {
+      flex: 0 0 auto;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #04222b;
+      border: 0;
+      border-radius: 10px;
+      padding: .8rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .waitlist-form button:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .waitlist-status {
+      margin: .9rem 0 0;
+      text-align: center;
+      font-size: .9rem;
+      min-height: 1.2em;
+      color: var(--accent);
+    }
+
+    /* ---- video list ---- */
+    .videos-title {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--ink-dim);
+      text-align: center;
+      margin: 0 0 1.25rem;
+    }
+
+    .video-item {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .video-item[open] { border-color: rgba(34,211,238,.4); }
+
+    .video-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: 1.1rem 1.25rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    .video-item summary::-webkit-details-marker { display: none; }
+
+    .play-icon {
+      flex: 0 0 auto;
+      width: 38px; height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(34,211,238,.12);
+      color: var(--accent);
+      transition: background .15s ease;
+    }
+    .play-icon svg { width: 16px; height: 16px; }
+    .video-item summary:hover .play-icon { background: rgba(34,211,238,.22); }
+
+    .summary-title { flex: 1 1 auto; }
+
+    .chevron {
+      flex: 0 0 auto;
+      color: var(--ink-dim);
+      transition: transform .2s ease;
+    }
+    .chevron svg { width: 20px; height: 20px; display: block; }
+    .video-item[open] .chevron { transform: rotate(180deg); }
+
+    .video-body {
+      padding: 0 1.25rem 1.25rem;
+    }
+    .video-body video {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      background: #000;
+      border: 1px solid var(--line);
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--ink-dim);
+      font-size: .8rem;
+      padding: 2rem 1rem 3rem;
+    }
+  </style>
+</head>
+
+<body data-page-id="home">
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+      <span class="logo-text">3D <span>GRIT</span></span>
+    </div>
+
+    <h1>Blender Pipeline Tools,<br><span class="grad">Built to Ship.</span></h1>
+    <p class="tagline">
+      A suite of Blender tools for your whole pipeline: rigging, retopology, UVs,
+      texturing, and realtime FX. Previews below.
+    </p>
+
+    <!-- ===== WAITLIST ===== -->
+    <section class="waitlist">
+      <h2>Join the 3D GRIT Waitlist</h2>
+      <p>Be first in line when tools drop. No spam, just launch news.</p>
+      <form class="waitlist-form" id="waitlist-form">
+        <input type="email" id="waitlist-email" name="email" placeholder="artist@studio.com" required autocomplete="email">
+        <button type="submit">Join</button>
+      </form>
+      <p class="waitlist-status" id="waitlist-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- ===== VIDEO PREVIEWS ===== -->
+    <p class="videos-title">Previews</p>
+    <div id="video-list"></div>
+  </div>
+
+  <footer>© 2026 3D GRIT, a PixelStortion studio. All rights reserved.</footer>
+
+  <!-- ============================================================
+       EDIT YOUR VIDEOS HERE
+       To add a preview, copy a line and change the title + url.
+       Order here = order on the page.
+       ============================================================ -->
+  <script>
+    const VIDEOS = [
+      { title: "3D GRIT Retopology", url: "https://pub-e32d0586a45344c98cee1a56fa11418b.r2.dev/Retopology.mp4" },
+      // { title: "3D GRIT Auto-Rig", url: "https://pub-e32d0586a45344c98cee1a56fa11418b.r2.dev/Your_File.mp4" },
+    ];
+  </script>
+
+  <!-- ============================================================
+       Page logic — you normally won't need to touch below here.
+       ============================================================ -->
+  <script>
+    (function () {
+      // ---- render the video list from VIDEOS ----
+      const list = document.getElementById('video-list');
+      const playSvg = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>';
+      const chevronSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+
+      VIDEOS.forEach(function (v) {
+        const item = document.createElement('details');
+        item.className = 'video-item';
+
+        const summary = document.createElement('summary');
+        summary.innerHTML =
+          '<span class="play-icon">' + playSvg + '</span>' +
+          '<span class="summary-title"></span>' +
+          '<span class="chevron">' + chevronSvg + '</span>';
+        summary.querySelector('.summary-title').textContent = v.title;
+
+        const body = document.createElement('div');
+        body.className = 'video-body';
+        const video = document.createElement('video');
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = 'none';
+        video.src = v.url;
+        body.appendChild(video);
+
+        item.appendChild(summary);
+        item.appendChild(body);
+
+        // pause others & auto-play when opened; pause when closed
+        item.addEventListener('toggle', function () {
+          if (item.open) {
+            list.querySelectorAll('video').forEach(function (other) {
+              if (other !== video) { other.pause(); }
+            });
+            const p = video.play();
+            if (p && p.catch) { p.catch(function () {}); }
+            track('preview_play', { label: v.title });
+          } else {
+            video.pause();
+          }
+        });
+
+        list.appendChild(item);
+      });
+
+      // ---- lightweight tracking (posts to the worker) ----
+      function endpoint() {
+        const m = document.querySelector('meta[name="grit:endpoint"]');
+        return (m && m.content) || '/api/track';
+      }
+      function track(event, extra) {
+        try {
+          const body = Object.assign({ event: event, path: location.pathname }, extra || {});
+          fetch(endpoint(), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+            keepalive: true,
+          }).catch(function () {});
+        } catch (e) {}
+      }
+
+      // ---- waitlist form ----
+      const form = document.getElementById('waitlist-form');
+      const status = document.getElementById('waitlist-status');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = document.getElementById('waitlist-email').value.trim();
+        if (!email) return;
+        status.textContent = 'Joining…';
+        track('waitlist_signup', { email: email, label: 'waitlist' });
+        form.reset();
+        status.textContent = "You're on the list. Welcome to 3D GRIT.";
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -4,88 +4,316 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ===== Primary meta ===== -->
-  <title>3D GRIT: Blender Pipeline Tools (Coming Soon)</title>
-  <meta name="description" content="3D GRIT is a suite of Blender tools for the animation pipeline: rigging, retopology, UVs, FX, and a Maya-style keymap. Launching soon. Join the waitlist.">
+  <title>3D GRIT: Blender Pipeline Tools</title>
+  <meta name="description" content="3D GRIT is a suite of Blender tools for the animation pipeline: rigging, retopology, UVs, FX, and a Maya-style keymap. Join the waitlist.">
   <link rel="canonical" href="https://3dgrit.com/">
   <meta name="robots" content="index,follow">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z'/%3E%3Cpath d='m3.3 7 8.7 5 8.7-5'/%3E%3Cpath d='M12 22V12'/%3E%3C/svg%3E">
 
-  <!-- ===== Open Graph ===== -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="3D GRIT">
-  <meta property="og:title" content="3D GRIT: Blender Pipeline Tools (Coming Soon)">
-  <meta property="og:description" content="A suite of Blender tools for the animation pipeline. Launching soon. Join the waitlist.">
+  <meta property="og:title" content="3D GRIT: Blender Pipeline Tools">
+  <meta property="og:description" content="A suite of Blender tools for the animation pipeline. Join the waitlist.">
   <meta property="og:url" content="https://3dgrit.com/">
   <meta property="og:image" content="https://3dgrit.com/3D_GRIT_SOCIALS.jpg">
 
-  <!-- ===== Twitter ===== -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@3DGrit">
-  <meta name="twitter:creator" content="@3DGrit">
-  <meta name="twitter:title" content="3D GRIT: Blender Pipeline Tools (Coming Soon)">
-  <meta name="twitter:description" content="A suite of Blender tools for the animation pipeline. Launching soon. Join the waitlist.">
-  <meta name="twitter:image" content="https://3dgrit.com/3D_GRIT_SOCIALS.jpg">
-
-  <!-- ===== Tracking endpoint (same-origin worker route) ===== -->
+  <!-- Tracking endpoint (same-origin worker route) -->
   <meta name="grit:endpoint" content="/api/track">
 
-  <!-- ===== Fonts (non-blocking) ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
+  <style>
+    /* ============================================================
+       3D GRIT — single-file landing page
+       Brand: cyan accent (#22d3ee) on near-black.
+       ============================================================ */
+    :root {
+      --bg: #0a0c10;
+      --panel: #11151c;
+      --panel-2: #161b24;
+      --line: #232a36;
+      --ink: #e8edf4;
+      --ink-dim: #93a0b4;
+      --accent: #22d3ee;
+      --accent-2: #38bdf8;
+      --radius: 14px;
+    }
 
-  <link rel="stylesheet" href="/assets/css/grit.css">
+    * { box-sizing: border-box; }
 
-  <!-- ===== Structured data ===== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://3dgrit.com/#org",
-        "name": "3D GRIT",
-        "url": "https://3dgrit.com/",
-        "description": "A modular auto-rigging and pipeline toolkit for Blender, built by artists who ship.",
-        "logo": "https://3dgrit.com/icon.jpg",
-        "sameAs": [
-          "https://www.instagram.com/3d_grit/",
-          "https://x.com/3DGrit",
-          "https://www.youtube.com/@3DGrit",
-          "https://www.facebook.com/3DGRIT/"
-        ],
-        "parentOrganization": { "@type": "Organization", "name": "PixelStortion" }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://3dgrit.com/#website",
-        "url": "https://3dgrit.com/",
-        "name": "3D GRIT",
-        "publisher": { "@id": "https://3dgrit.com/#org" }
-      }
-    ]
-  }
-  </script>
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* subtle grid backdrop */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(34,211,238,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,211,238,.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 1.25rem 5rem;
+    }
+
+    /* ---- header ---- */
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      margin-bottom: 2.5rem;
+    }
+    .logo svg { width: 38px; height: 38px; }
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: .04em;
+    }
+    .logo-text span { color: var(--accent); }
+
+    h1 {
+      text-align: center;
+      /* scales with viewport so "ANIMATION PIPELINE" always fits on one line */
+      font-size: clamp(1.5rem, 7.5vw, 4.3rem);
+      white-space: nowrap;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -.01em;
+      margin: 0 0 .5rem;
+      line-height: 1.05;
+    }
+    h1 .grad {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), #2563eb);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    h1 .grad-end { color: #2563eb; }
+    .tagline {
+      text-align: center;
+      color: var(--ink-dim);
+      font-size: 1.05rem;
+      max-width: 50ch;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* ---- video list (shown directly, no dropdown) ---- */
+    .videos-title {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--ink-dim);
+      text-align: center;
+      margin: 0 0 1.5rem;
+    }
+
+    .video-item { margin-bottom: 2.5rem; }
+    .video-title {
+      margin: 0 0 .75rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+    .video-title .wip {
+      margin-left: .6rem;
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--accent);
+      border: 1px solid rgba(34,211,238,.4);
+      border-radius: 999px;
+      padding: .15rem .55rem;
+      vertical-align: middle;
+    }
+    .video-item video {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius);
+      background: #000;
+      border: 1px solid var(--line);
+    }
+
+    /* ---- footer (matches reference page) ---- */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: #06080b;
+      border-top: 1px solid var(--line);
+      padding: 3rem 0;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand { display: flex; flex-direction: column; gap: 1rem; }
+    .footer-brand-logo { display: flex; align-items: center; gap: .5rem; }
+    .footer-brand-logo span { font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: .15em; }
+    .footer-brand-logo span em { font-style: normal; color: var(--accent); }
+    .footer-brand p { font-size: .85rem; color: var(--ink-dim); max-width: 340px; margin: 0; }
+
+    .social-row { display: flex; gap: 1.1rem; margin-top: .2rem; }
+    .social-row a { display: inline-flex; color: var(--ink-dim); transition: color .2s, transform .2s; }
+    .social-row a:hover { color: var(--accent); transform: translateY(-2px); }
+    .social-row svg { width: 20px; height: 20px; }
+
+    .footer-col h3 { font-size: .8rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: .12em; margin: 0 0 1rem; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+    .footer-col ul.footer-tools { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem 1.5rem; }
+    .footer-col li, .footer-col a, .footer-col span { font-size: .85rem; color: var(--ink-dim); text-decoration: none; transition: color .2s; }
+    .footer-col a:hover { color: var(--accent); }
+
+    .footer-bottom { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); font-size: .72rem; color: #5a6678; }
+    .footer-bottom p { margin: 0; }
+
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-brand { align-items: center; }
+      .footer-col ul.footer-tools { grid-template-columns: 1fr; }
+      .footer-col ul { align-items: center; }
+    }
+  </style>
 </head>
 
-<body data-page-id="coming-soon">
-  <main class="coming-soon">
-    <div class="cs-grid-bg"></div>
-    <div class="cs-glow"></div>
+<body data-page-id="home">
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+      <span class="logo-text">3D <span>GRIT</span></span>
+    </div>
 
-    <div class="cs-inner">
-      <div class="cs-logo">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
-        <span class="cs-logo-text">3D <span>GRIT</span></span>
+    <h1>AUTOMATED<br><span class="grad">ANIMATION PIPELINE</span><br><span class="grad-end">FOR BLENDER</span></h1>
+
+    <!-- ===== VIDEO PREVIEWS ===== -->
+    <p class="videos-title">Early Development Previews</p>
+    <div id="video-list"></div>
+  </div>
+
+  <!-- ===== FOOTER (matches reference) ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            <span>3D <em>GRIT</em></span>
+          </div>
+          <p>A suite of Blender tools for your whole pipeline: rigging, retopology, UVs, texturing, and realtime FX.</p>
+          <div class="social-row">
+            <a href="https://www.instagram.com/3d_grit/" target="_blank" rel="noopener" aria-label="3D GRIT on Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0Zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03Zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162ZM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4Zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439Z"/></svg></a>
+            <a href="https://x.com/3DGrit" target="_blank" rel="noopener" aria-label="3D GRIT on X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+            <a href="https://www.youtube.com/@3DGrit" target="_blank" rel="noopener" aria-label="3D GRIT on YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="https://www.facebook.com/3DGRIT/" target="_blank" rel="noopener" aria-label="3D GRIT on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Tools</h3>
+          <ul class="footer-tools">
+            <li><span>Auto-Rigging Framework</span></li>
+            <li><span>Auto-Face Rig</span></li>
+            <li><span>MayaForBlender</span></li>
+            <li><span>Retopology</span></li>
+            <li><span>Texture Transfer</span></li>
+            <li><span>Normal Map Baking</span></li>
+            <li><span>Realtime FX</span></li>
+            <li><span>Quad Remesh</span></li>
+            <li><span>Organic</span></li>
+            <li><span>Paint Effects</span></li>
+            <li><span>UV Unwrap</span></li>
+          </ul>
+        </div>
+
       </div>
 
-      <h1>COMING SOON</h1>
-      <p class="cs-sub">Currently Under Construction</p>
+      <div class="footer-bottom">
+        <p>© 2026 3D GRIT, a PixelStortion studio. All rights reserved.</p>
+      </div>
     </div>
-  </main>
+  </footer>
 
-  <script src="/assets/js/track.js" defer></script>
+  <!-- ============================================================
+       Your previews live in videos.js — open that file to add or
+       edit videos (title + Cloudflare link). Nothing to change here.
+       ============================================================ -->
+  <script src="videos.js"></script>
+
+  <!-- ============================================================
+       Page logic — you normally won't need to touch below here.
+       ============================================================ -->
+  <script>
+    (function () {
+      // ---- render the video list from VIDEOS (shown directly) ----
+      const list = document.getElementById('video-list');
+
+      VIDEOS.forEach(function (v) {
+        const item = document.createElement('div');
+        item.className = 'video-item';
+
+        const title = document.createElement('h3');
+        title.className = 'video-title';
+        title.textContent = v.title;
+        const wip = document.createElement('span');
+        wip.className = 'wip';
+        wip.textContent = 'WIP';
+        title.appendChild(wip);
+
+        const video = document.createElement('video');
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.src = v.url;
+
+        // pause the others when one starts playing
+        video.addEventListener('play', function () {
+          list.querySelectorAll('video').forEach(function (other) {
+            if (other !== video) { other.pause(); }
+          });
+          track('preview_play', { label: v.title });
+        });
+
+        item.appendChild(title);
+        item.appendChild(video);
+        list.appendChild(item);
+      });
+
+      // ---- lightweight tracking (posts to the worker) ----
+      function endpoint() {
+        const m = document.querySelector('meta[name="grit:endpoint"]');
+        return (m && m.content) || '/api/track';
+      }
+      function track(event, extra) {
+        try {
+          const body = Object.assign({ event: event, path: location.pathname }, extra || {});
+          fetch(endpoint(), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+            keepalive: true,
+          }).catch(function () {});
+        } catch (e) {}
+      }
+
+    })();
+  </script>
 </body>
 </html>
